@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+    <script
+      src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"
+      defer
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <div class="calculator">
+        <div class="display" id="display">{{ current || 0}}</div>
+        <div class="btn clear" id="clear" @click="clear">AC</div>
+        <!-- <div class="btn">+/-</div>
+        <div class="btn">%</div> -->
+        <div class="btn operator" id="divide" @click="divide">
+          ÷
+        </div>
+        <div class="btn" id="seven" @click="append( '7')">7</div>
+        <div class="btn" id="eight" @click="append('8')">8</div>
+        <div class="btn" id="nine" @click="append('9')">9</div>
+        <div class="btn operator" id="multiply" @click="times">
+          ×
+        </div>
+        <div class="btn" id="four" @click="append('4')">4</div>
+        <div class="btn" id="five" @click="append('5')">5</div>
+        <div class="btn" id="six" @click="append('6')">6</div>
+        <div class="btn operator" @click="minus('-')" id="subtract">
+          -
+        </div>
+        <div class="btn" id="one" @click="append('1')">1</div>
+        <div class="btn" id="two" @click="append('2')">2</div>
+        <div class="btn" id="three" @click="append('3')">3</div>
+        <div class="btn operator" @click="add('+')" id="add">+</div>
+        <div class="btn zero" id="zero" @click="append(0)">0</div>
+        <div class="btn" id="decimal" @click='dot'>.</div>
+        <div class="btn operator" id="equals" @click="equal">=</div>
+      </div>
+    </div>
+  </body>
+</html>
