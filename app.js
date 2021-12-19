@@ -5,6 +5,7 @@ const app = Vue.createApp({
       current: "",
       operator: null,
       operatorClicked: false,
+      currentOperatorSign: null,
     };
   },
   methods: {
@@ -13,15 +14,13 @@ const app = Vue.createApp({
       this.previous = null;
       this.operator = null;
       this.operatorClicked = false;
+      this.currentOperatorSign = null;
     },
     sign() {
       this.current =
         this.current.charAt(0) === "-"
           ? this.current.slice(1)
           : `-${this.current}`;
-    },
-    percent() {
-      this.current = `${parseFloat(this.current) / 100}`;
     },
     append(number) {
       if (this.operatorClicked) {
@@ -36,14 +35,13 @@ const app = Vue.createApp({
       }
     },
     setPrevious() {
-      console.log(this.current);
       if (this.current) {
         this.previous = this.current;
       }
       this.current = "";
       this.operatorClicked = true;
     },
-    divide() {
+    divide(sign) {
       if (this.current && this.previous) {
         this.previous = `${this.operator(
           parseFloat(this.current),
@@ -54,11 +52,10 @@ const app = Vue.createApp({
         this.setPrevious();
       }
       this.operator = (a, b) => b / a;
+      this.currentOperatorSign = sign;
     },
-    times() {
+    times(sign) {
       if (this.current && this.previous) {
-        console.log("again plus");
-
         this.previous = `${this.operator(
           parseFloat(this.current),
           parseFloat(this.previous)
@@ -68,6 +65,7 @@ const app = Vue.createApp({
         this.setPrevious();
       }
       this.operator = (a, b) => a * b;
+      this.currentOperatorSign = sign;
     },
     minus(sign) {
       if (this.current && this.previous) {
@@ -81,11 +79,10 @@ const app = Vue.createApp({
         this.setPrevious();
       }
       this.operator = (a, b) => b - a;
-      // this.append(sign)
+      this.currentOperatorSign = sign;
     },
     add(sign) {
       if (this.current && this.previous) {
-        console.log("again plus");
         this.previous = `${this.operator(
           parseFloat(this.current),
           parseFloat(this.previous)
@@ -96,7 +93,7 @@ const app = Vue.createApp({
         this.setPrevious();
       }
       this.operator = (a, b) => a + b;
-      // this.append(sign)
+      this.currentOperatorSign = sign;
     },
     equal() {
       if (this.current && this.previous) {

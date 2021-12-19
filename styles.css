@@ -63,13 +63,17 @@ ul li {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(50px, auto);
+  box-shadow: 0 0 20px 1px #eee;
 }
 
 .display {
   grid-column: 1/5;
-  padding: 50px 0;
+  padding: 20px;
   color: #fff;
   background-color: #333;
+  text-align: center;
+  overflow: hidden;
+  font-size: 20px;
 }
 
 .clear {
@@ -81,16 +85,36 @@ ul li {
 }
 
 .btn { 
+  width: 100%;
+  height: 100%;
   background-color: #eee;
   border: 1px solid #333;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 100ms ease;
+}
+
+.btn:hover {
+  border-color: #ffa500;
+  border-width: 2px;
+}
+
+.btn:active {
+  scale: 0.9;
+}
+
+.btnDisabled {
+  opacity: 0.5;
 }
 
 .operator {
   background-color: orange;
   color: #fff;
+}
+
+.operator:hover {
+  border-color: #fff;
 }
 
 .inputValue {

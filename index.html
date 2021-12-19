@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="app.js" defer></script>
-    <script
-      src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"
-      defer
-    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,32 +18,122 @@
   <body>
     <div id="app">
       <div class="calculator">
-        <div class="display" id="display">{{ current || 0}}</div>
+        <div class="display" id="display">
+          {{ current || currentOperatorSign || 0}}
+        </div>
         <div class="btn clear" id="clear" @click="clear">AC</div>
         <!-- <div class="btn">+/-</div>
         <div class="btn">%</div> -->
-        <div class="btn operator" id="divide" @click="divide">
-          ÷
+        <div id="divide">
+          <button @click="divide('÷')" class="btn operator">÷</button>
         </div>
-        <div class="btn" id="seven" @click="append( '7')">7</div>
-        <div class="btn" id="eight" @click="append('8')">8</div>
-        <div class="btn" id="nine" @click="append('9')">9</div>
-        <div class="btn operator" id="multiply" @click="times">
+        <div id="seven">
+          <button
+            :disabled="current.length > 10"
+            :class="{btnDisabled: current.length > 10}"
+            @click="append( '7')"
+            class="btn"
+          >
+            7
+          </button>
+        </div>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="eight"
+          @click="append('8')"
+        >
+          8
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="nine"
+          @click="append('9')"
+        >
+          9
+        </button>
+        <button class="btn operator" id="multiply" @click="times('×')">
           ×
-        </div>
-        <div class="btn" id="four" @click="append('4')">4</div>
-        <div class="btn" id="five" @click="append('5')">5</div>
-        <div class="btn" id="six" @click="append('6')">6</div>
-        <div class="btn operator" @click="minus('-')" id="subtract">
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="four"
+          @click="append('4')"
+        >
+          4
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="five"
+          @click="append('5')"
+        >
+          5
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="six"
+          @click="append('6')"
+        >
+          6
+        </button>
+        <button class="btn operator" @click="minus('-')" id="subtract">
           -
-        </div>
-        <div class="btn" id="one" @click="append('1')">1</div>
-        <div class="btn" id="two" @click="append('2')">2</div>
-        <div class="btn" id="three" @click="append('3')">3</div>
-        <div class="btn operator" @click="add('+')" id="add">+</div>
-        <div class="btn zero" id="zero" @click="append(0)">0</div>
-        <div class="btn" id="decimal" @click='dot'>.</div>
-        <div class="btn operator" id="equals" @click="equal">=</div>
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="one"
+          @click="append('1')"
+        >
+          1
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="two"
+          @click="append('2')"
+        >
+          2
+        </button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="three"
+          @click="append('3')"
+        >
+          3
+        </button>
+        <button class="btn operator" @click="add('+')" id="add">+</button>
+        <button
+          :disabled="current.length > 10"
+          :class="{btnDisabled: current.length > 10}"
+          class="btn zero"
+          id="zero"
+          @click="append(0)"
+        >
+          0
+        </button>
+        <button
+          :class="{btnDisabled: current.length > 10}"
+          class="btn"
+          id="decimal"
+          @click="dot"
+        >
+          .
+        </button>
+        <button class="btn operator" id="equals" @click="equal">=</button>
       </div>
     </div>
   </body>
