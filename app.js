@@ -47,6 +47,7 @@ const app = Vue.createApp({
           parseFloat(this.current),
           parseFloat(this.previous)
         )}`;
+        this.current = "";
         this.operatorClicked = true;
       } else {
         this.setPrevious();
@@ -60,6 +61,7 @@ const app = Vue.createApp({
           parseFloat(this.current),
           parseFloat(this.previous)
         )}`;
+        this.current = "";
         this.operatorClicked = true;
       } else {
         this.setPrevious();
